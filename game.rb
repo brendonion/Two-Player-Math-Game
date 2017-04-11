@@ -15,7 +15,6 @@ class Game
       puts "-----NEW TURN-----"
       puts "#{@players[@current_player_indice].name}: #{new_question.question}"
       answer = gets.chomp
-      answer
       if answer.to_i == new_question.random1 + new_question.random2
         puts "Correct!"
         next_player
