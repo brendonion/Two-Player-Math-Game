@@ -6,9 +6,4 @@ class Player
     @name = name
     @lives = 3
   end
-  
-  def current_player
-    @players[@current_player_indice]
-    @lives[@current_player_indice]
-  end
 end
