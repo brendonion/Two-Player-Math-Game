@@ -1,12 +1,8 @@
 class Game
-  def initialize
-    @players = [1, 2]
+  def initialize(player1, player2)
+    @players = [player1, player2]
     @current_player_indice = 0
     @lives = [3, 3]
-  end
-
-  def random_number
-    rand(1..20)
   end
 
   def current_player
@@ -18,14 +14,14 @@ class Game
     @current_player_indice = (@current_player_indice-1) % @players.length
   end
 
-  def question
+  def start_game
     until @lives[@current_player_indice] == 0
-      random1 = random_number
-      random2 = random_number
-      puts "#{@players[@current_player_indice]}: What is #{random1} + #{random2}?"
+      new_question = Questions.new
+      puts "--------NEW TURN--------"
+      puts "#{@players[@current_player_indice].name}: #{new_question.question}"
       answer = gets.chomp
       answer
-      if answer.to_i == (random1 + random2)
+      if answer.to_i == new_question.random1 + new_question.random2
         puts "Correct!"
         next_player
       else
@@ -36,17 +32,12 @@ class Game
           next_player
         else
           next_player
-          puts "#{@players[@current_player_indice]} Wins!"
+          puts "--------GAME OVER--------"
+          puts "#{@players[@current_player_indice].name} wins with a score of #{@lives[@current_player_indice]}/3"
           break
         end
       end
     end
   end
 end
-
-
-newGame = Game.new
-
-newGame.question
-
 
