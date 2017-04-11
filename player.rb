@@ -1,7 +1,14 @@
 class Player
   attr_reader :name
+  attr_accessor :lives
+
   def initialize(name)
     @name = name
-    @current_player_indice = 0
+    @lives = 3
+  end
+  
+  def current_player
+    @players[@current_player_indice]
+    @lives[@current_player_indice]
   end
 end
